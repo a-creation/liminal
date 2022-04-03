@@ -109,7 +109,9 @@ function LandingPage() {
       },
       series: [
         {
-          data: calculateAssetHistoryPrice()
+          data: calculateAssetHistoryPrice(),
+          color: "#2ad7ba",
+          name: "Price"
         }
       ]
     }
@@ -348,15 +350,18 @@ function LandingPage() {
                 <Link id="sell-link" to="/sell">Redeem</Link>
               </div>
             </div>
-            <div className="overlap-group4">
-              <div className="buy inter-semi-bold-white-22-4px">
-                <a href="https://raydium.io/swap/">Buy</a>
+            <div className="overlap-group-container">
+            <div className="overlap-group">
+                <WalletMultiButton />
+              </div>
+              <div className="overlap-group4">
+                <div className="buy inter-semi-bold-white-22-4px">
+                  <a href="https://raydium.io/swap/">Buy</a>
+                </div>
               </div>
             </div>
             <div className="overlap-group-container">
               <div className="overlap-group">
-                <WalletMultiButton/>
-                <br/>
                 <WalletDisconnectButton />
               </div>
               <div className="overlap-group5">
@@ -381,12 +386,12 @@ function LandingPage() {
             <div className="amount-per-set inter-semi-bold-mountain-mist-22-4px">{amountPerSet}</div>
             <div className="surname inter-semi-bold-mountain-mist-22-4px">{surname}</div>
             <div className="total-price-per-set inter-semi-bold-mountain-mist-22-4px">{totalPricePerSet}</div>
+            <div className="xxxxx inter-semi-bold-black-19-2px">{xxxXx}</div>
             <div className="ticker inter-semi-bold-mountain-mist-22-4px">{ticker}</div>
             <div className="sdi-label-1">
               <img className="liminal-circle-1" src={liminalCircle12} />
               <div className="solana-de-fi-index-1 inter-semi-bold-black-19-2px">{solanaDefiIndex2}</div>
             </div>
-            <div className="xxxxx inter-semi-bold-black-19-2px">{xxxXx}</div>
             <div className="serum-row inter-normal-black-19-2px">
               <div className="serum-label">
                 <img className="liminal-circle-1" src={liminalCircle13} />
