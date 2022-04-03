@@ -1,0 +1,93 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+@import url("https://fonts.googleapis.com/css?family=Inter:400,700,500,600");
+
+.screen a {
+  display: contents;
+  text-decoration: none;
+}
+
+.container-center-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  width: 100%;
+}
+
+.container-center-horizontal > * {
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+:root {
+    --black: #000000;
+    --heliotrope: #e186ff;
+    --mist-gray: #c4c4c4;
+    --mountain-mist: #949494;
+    --turquoise: #2fefcf;
+    --white: #ffffff;
+
+    --font-size-l: 22.4px;
+    --font-size-xl: 32px;
+    --font-size-xl2: 19.2px;
+    --font-size-xl22: 20px;
+    --font-size-xs: 18.5px;
+    --font-size-xxs: 15.4px;
+    --font-size-xxxs: 15px;
+
+    --font-family-inter: "Inter", Helvetica;
+  }
+  .inter-normal-black-19-2px {
+    color: var(--black);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-xl2);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .inter-semi-bold-black-19-2px {
+    color: var(--black);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-xl2);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .inter-semi-bold-mountain-mist-22-4px {
+    color: var(--mountain-mist);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-l);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .inter-semi-bold-white-22-4px {
+    color: var(--white);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-l);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .inter-medium-black-18-5px {
+    color: var(--black);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-xs);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .inter-medium-mountain-mist-15-4px {
+    color: var(--mountain-mist);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-xxs);
+    font-style: normal;
+    font-weight: 500;
+  }

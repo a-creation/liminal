@@ -1,0 +1,673 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #ECECEC;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+
+.dashboard {
+  align-items: center;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  height: 1978px;
+  padding: 33px 142px;
+  width: 1512px;
+}
+
+.flex-row {
+  align-items: flex-end;
+  display: flex;
+  height: 285px;
+  margin-right: 67.2px;
+  min-width: 1077px;
+}
+
+.flex-col {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  min-height: 285px;
+  width: 384px;
+}
+
+.liminal-text {
+  height: 83px;
+    margin-top: 39px;
+    object-fit: cover;
+    width: 193px;
+}
+
+.sdi-label {
+  align-items: flex-start;
+  align-self: center;
+  display: flex;
+  height: 39px;
+  margin-right: 14.12px;
+  margin-top: 33px;
+  min-width: 328px;
+}
+
+.liminal-circle-1-1 {
+  align-self: center;
+  height: 38px;
+  margin-top: 0.0px;
+  object-fit: cover;
+  width: 38px;
+}
+
+.solana-de-fi-index {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  letter-spacing: 0;
+  margin-left: 12px;
+  min-height: 39px;
+}
+
+.my-portfolio-stn {
+  align-items: flex-start;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  margin-top: 29px;
+  min-height: 131px;
+  width: 302px;
+}
+
+.my-portfolio-lbl {
+  height: 18px;
+  margin-left: 3.06px;
+  margin-top: 2px;
+  width: 108px;
+}
+
+.overlap-group1 {
+  height: 106px;
+  margin-top: 5px;
+  position: relative;
+  width: 296px;
+}
+
+.market-cap-stn {
+  height: 42px;
+  left: 1px;
+  position: absolute;
+  top: 65px;
+  width: 158px;
+}
+
+.market-cap-val {
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 0;
+  width: 154px;
+}
+
+.market-cap-lbl {
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 23px;
+  width: 87px;
+}
+
+.sdi-stn {
+  height: 42px;
+  left: 206px;
+  position: absolute;
+  top: 65px;
+  width: 88px;
+}
+
+.tokens-owned-val {
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 0;
+  width: 25px;
+}
+
+.tokens-owned-lbl {
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 23px;
+  width: 84px;
+}
+
+.my-balance-val {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: 52.4px;
+  font-weight: 600;
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 0;
+  width: 213px;
+}
+
+.change-val {
+  color: var(--turquoise);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  left: 225px;
+  letter-spacing: 0;
+  position: absolute;
+  top: 21px;
+  width: 71px;
+}
+
+.overlap-group2 {
+  align-items: flex-end;
+  background-color: var(--turquoise);
+  border-radius: 9.6px;
+  display: flex;
+  height: 59px;
+  justify-content: flex-end;
+  margin-bottom: 32.97px;
+  margin-left: 79px;
+  min-width: 141px;
+  padding: 14.6px 45.7px;
+}
+
+.mint {
+  letter-spacing: 0;
+  min-height: 27px;
+  min-width: 49px;
+}
+
+.overlap-group3 {
+  align-items: flex-end;
+  background-color: var(--turquoise);
+  border-radius: 9.6px;
+  display: flex;
+  height: 59px;
+  margin-bottom: 32.97px;
+  margin-left: 16px;
+  min-width: 141px;
+  padding: 15.9px 25.6px;
+}
+
+.redeem {
+  letter-spacing: 0;
+  min-height: 27px;
+  min-width: 89px;
+}
+
+.overlap-group4 {
+  align-items: flex-start;
+  background-color: var(--heliotrope);
+  border-radius: 9.6px;
+  /* display: flex; */
+  height: 59px;
+  margin-bottom: 32.97px;
+  margin-left: 16px;
+  min-width: 141px;
+  padding: 14.1px 46.7px;
+  text-align: center;
+}
+
+.buy {
+  letter-spacing: 0;
+  min-height: 27px;
+}
+
+.overlap-group-container {
+  align-items: flex-end;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14.97px;
+  margin-left: 5px;
+  min-height: 234px;
+  width: 154px;
+}
+
+.overlap-group {
+  align-items: flex-start;
+  flex-direction: column;
+  background-image: url(https://anima-uploads.s3.amazonaws.com/projects/61d5fb6479d2de012a81c2e8/releases/6248c99afc21b296361f38c4/img/rectangle-1@2x.svg);
+  background-size: 100% 100%;
+  display: flex;
+  height: 45px;
+  justify-content: flex-end;
+  margin-right: 4.52px;
+  min-width: 150px;
+  padding: 15.6px 15.2px;
+  margin-top: 50px;
+}
+
+.connect-wallet {
+  height: 13px;
+  width: 119px;
+}
+
+.overlap-group5 {
+  align-items: flex-end;
+  background-color: var(--heliotrope);
+  border-radius: 9.6px;
+  display: flex;
+  height: 59px;
+  justify-content: flex-end;
+  margin-right: 2.0px;
+  margin-top: 80px;
+  min-width: 141px;
+  padding: 15.9px 50.2px;
+}
+
+.sell {
+  letter-spacing: 0;
+  min-height: 27px;
+  min-width: 40px;
+}
+
+.overlap-group8 {
+  align-items: flex-start;
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: 0px 0px 4px #00000026;
+  display: flex;
+  height: 566px;
+  margin-right: 29.0px;
+  margin-top: 53px;
+  min-width: 923px;
+  padding: 15px 13px;
+}
+
+.rectangle-7 {
+  background-color: var(--mist-gray);
+  height: 534px;
+  width: 895px;
+}
+
+.overlap-group7 {
+  height: 550px;
+  margin-left: 1.0px;
+  margin-top: 33px;
+  position: relative;
+  width: 1219px;
+}
+
+.rectangle-8 {
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: 0px 0px 4px #00000026;
+  height: 550px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1217px;
+}
+
+.token {
+  left: 67px;
+  letter-spacing: 0;
+  position: absolute;
+  top: 27px;
+}
+
+.rectangle-9 {
+  background-color: var(--mist-gray);
+  height: 2px;
+  left: 16px;
+  position: absolute;
+  top: 72px;
+  width: 1180px;
+}
+
+.amount-per-set {
+  left: 278px;
+  letter-spacing: 0;
+  position: absolute;
+  top: 27px;
+}
+
+.surname {
+  left: 581px;
+  letter-spacing: 0;
+  position: absolute;
+  top: 27px;
+}
+
+.total-price-per-set {
+  left: 744px;
+  letter-spacing: 0;
+  position: absolute;
+  top: 27px;
+}
+
+.ticker {
+  left: 1076px;
+  letter-spacing: 0;
+  position: absolute;
+  top: 27px;
+}
+
+.sdi-label-1 {
+  align-items: flex-start;
+  display: flex;
+  height: 23px;
+  left: 25px;
+  min-width: 197px;
+  position: absolute;
+  top: 98px;
+}
+
+.liminal-circle-1 {
+  align-self: center;
+  height: 23px;
+  margin-bottom: 0.08px;
+  object-fit: cover;
+  width: 23px;
+}
+
+.solana-de-fi-index-1,
+.serum,
+.raydium,
+.saber,
+.orca,
+.solend,
+.marinade {
+  letter-spacing: 0;
+  margin-left: 8px;
+  min-height: 23px;
+}
+
+.xxxxx {
+  left: 945px;
+  letter-spacing: 0;
+  position: absolute;
+  text-align: right;
+  top: 98px;
+  width: 215px;
+}
+
+.serum-row {
+  align-items: flex-start;
+  display: flex;
+  height: 23px;
+  left: 25px;
+  min-width: 1146px;
+  position: absolute;
+  top: 205px;
+}
+
+.serum-label {
+  align-items: flex-start;
+  display: flex;
+  min-width: 93px;
+}
+
+.number {
+  letter-spacing: 0;
+  margin-left: 194px;
+  min-height: 23px;
+  text-align: center;
+  width: 100px;
+}
+
+.price {
+  letter-spacing: 0;
+  margin-left: 146px;
+  min-height: 23px;
+  text-align: center;
+  width: 103px;
+}
+
+.price-1 {
+  letter-spacing: 0;
+  margin-left: 131px;
+  min-height: 23px;
+  text-align: center;
+  width: 103px;
+}
+
+.srm,
+.name,
+.sbr,
+.orca-1,
+.slnd,
+.mnde {
+  letter-spacing: 0;
+  margin-left: 53px;
+  min-height: 23px;
+  text-align: right;
+  width: 215px;
+}
+
+.raydium-row {
+  align-items: flex-start;
+  display: flex;
+  height: 23px;
+  left: 25px;
+  min-width: 1146px;
+  position: absolute;
+  top: 260px;
+}
+
+.raydium-label {
+  align-items: flex-start;
+  display: flex;
+  min-width: 112px;
+}
+
+.number-1 {
+  letter-spacing: 0;
+  margin-left: 175px;
+  min-height: 23px;
+  text-align: center;
+  width: 100px;
+}
+
+.saber-row {
+  align-items: flex-start;
+  display: flex;
+  height: 23px;
+  left: 26px;
+  min-width: 1146px;
+  position: absolute;
+  top: 315px;
+}
+
+.saber-label {
+  align-items: flex-start;
+  display: flex;
+  min-width: 87px;
+}
+
+.number-2 {
+  letter-spacing: 0;
+  margin-left: 200px;
+  min-height: 23px;
+  text-align: center;
+  width: 100px;
+}
+
+.saber-row-1 {
+  align-items: flex-start;
+  display: flex;
+  height: 23px;
+  left: 26px;
+  min-width: 1146px;
+  position: absolute;
+  top: 370px;
+}
+
+.saber-label-1 {
+  align-items: flex-start;
+  display: flex;
+  min-width: 77px;
+}
+
+.number-3 {
+  letter-spacing: 0;
+  margin-left: 210px;
+  min-height: 23px;
+  text-align: center;
+  width: 100px;
+}
+
+.solend-row {
+  align-items: flex-start;
+  display: flex;
+  height: 23px;
+  left: 26px;
+  min-width: 1146px;
+  position: absolute;
+  top: 425px;
+}
+
+.solend-label {
+  align-items: flex-start;
+  display: flex;
+  min-width: 97px;
+}
+
+.number-4 {
+  letter-spacing: 0;
+  margin-left: 190px;
+  min-height: 23px;
+  text-align: center;
+  width: 100px;
+}
+
+.solend-row-1 {
+  align-items: flex-start;
+  display: flex;
+  height: 23px;
+  left: 26px;
+  min-width: 1146px;
+  position: absolute;
+  top: 480px;
+}
+
+.solend-label-1 {
+  align-items: flex-start;
+  display: flex;
+  min-width: 120px;
+}
+
+.number-5 {
+  letter-spacing: 0;
+  margin-left: 167px;
+  min-height: 23px;
+  text-align: center;
+  width: 100px;
+}
+
+.overlap-group6 {
+  align-items: center;
+  background-image: url(https://anima-uploads.s3.amazonaws.com/projects/61d5fb6479d2de012a81c2e8/releases/6248c99afc21b296361f38c4/img/rectangle-10@1x.svg);
+  background-size: 100% 100%;
+  display: flex;
+  height: 36px;
+  left: 0;
+  min-width: 1217px;
+  padding: 0 25px;
+  position: absolute;
+  top: 145px;
+}
+
+.underlying-tokens-lbl {
+  color: var(--mountain-mist);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xxxs);
+  font-weight: 600;
+  letter-spacing: 0;
+  min-height: 18px;
+  width: 353px;
+}
+
+.about {
+  align-self: flex-start;
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0;
+  margin-left: 11px;
+  margin-top: 44px;
+  min-height: 36px;
+  min-width: 89px;
+  text-align: right;
+}
+
+.the-solana-de-fi-inde {
+  align-self: flex-end;
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xl22);
+  font-weight: 400;
+  letter-spacing: 0;
+  margin-top: 32px;
+  min-height: 168px;
+  width: 1217px;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+/* I don't think this works */
+.select {
+  -webkit-touch-callout: flex; /* iOS Safari */
+    -webkit-user-select: flex; /* Safari */
+     -khtml-user-select: flex; /* Konqueror HTML */
+       -moz-user-select: flex; /* Old versions of Firefox */
+        -ms-user-select: flex; /* Internet Explorer/Edge */
+            user-select: flex; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.nodrag {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  -ms-user-drag: none;
+  user-drag: none;
+}
