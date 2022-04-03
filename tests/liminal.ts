@@ -1,12 +1,12 @@
 import * as anchor from "@project-serum/anchor";
 import { Program } from "@project-serum/anchor";
-import { Testliminal } from "../target/types/testliminal";
+import { Liminal } from "../target/types/liminal";
 
-describe("testliminal", () => {
+describe("liminal", () => {
   // Configure the client to use the local cluster.
   anchor.setProvider(anchor.Provider.env());
 
-  const program = anchor.workspace.Testliminal as Program<Testliminal>;
+  const program = anchor.workspace.Liminal as Program<Liminal>;
 
   it("Is initialized!", async () => {
     // Add your test here.

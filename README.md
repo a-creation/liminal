@@ -19,3 +19,7 @@ pubkey: Gwq3JPWNCE1yJHCZ5C8pBjbN59kupJymbFsxXAbi6n75
 Save this seed phrase and your BIP39 passphrase to recover your new keypair:
 position depth false tomato parade poem become inmate antique rough rather tent
 ===============================================================================
+
+anchor deploy --provider.cluster devnet
+
+
