@@ -13,4 +13,10 @@ describe("liminal", () => {
     const tx = await program.rpc.initialize({});
     console.log("Your transaction signature", tx);
   });
+
+  it("Is indexed!", async () => {
+    // Add your test here.
+    const tx = await program.rpc.mintIndex({});
+    console.log("Your transaction signature", tx);
+  });
 });

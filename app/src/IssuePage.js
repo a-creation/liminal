@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import "./RedeemPage.css";
 import "./globals.css";
-import { web3, Provider, setProvider } from '@project-serum/anchor';
+import { web3, Provider, setProvider, AnchorError } from '@project-serum/anchor';
 import { ConnectionContext, useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { LAMPORTS_PER_SOL } from '@solana/web3.js';
 import tokenMints from './utils/tokens'
 import idl from './utils/liminal.json'
 import * as anchor from '@project-serum/anchor';
-import { TOKEN_PROGRAM_ID, getMint } from '@solana/spl-token';
+import { TOKEN_PROGRAM_ID, getMint, transfer, createMint } from '@solana/spl-token';
 
 const programId = "3tcZUbsj9mcBJGVuEqPbc8TrbehYMpqucVAsNZP6Z4rN"
 
@@ -138,88 +138,128 @@ function BuyPage() {
         return provider;
     }
     const issueFunction = async () => {
-      console.log('issue')
-      const provider = await getProvider();
 
-      const program = new anchor.Program(idl, programId, provider);
-      const program_account = anchor.web3.Keypair.generate();
-      let authority
-      let bumpSeed
-      [authority, bumpSeed] = await web3.PublicKey.findProgramAddress(
-        [program_account.publicKey.toBuffer()],
-        program.programId
-      );
+      console.log('wallet.publicKey', wallet)
+      const keypair = anchor.web3.Keypair.generate();
 
-      console.log('here', program.programId, wallet.publicKey)
-      console.log('yo', authority)
+      let pk = new web3.PublicKey(wallet.publicKey);
 
-      // const mintPublicKey = new web3.PublicKey(tokenMints[0])
+      
+      let index_mint = await createMint(connection, keypair, pk, null, 2, TOKEN_PROGRAM_ID)
 
-      for(const tokenMint of tokenMints){
-        let mint = new web3.PublicKey(tokenMint)
-        let accounts = await connection.getParsedTokenAccountsByOwner(wallet.publicKey, { mint: mint });
-        console.log('accounts', accounts)
-  
-        // if(accounts.value[0]){
-        //   let balance = await connection.getTokenAccountBalance(accounts.value[0].pubkey)
-        //   console.log(balance.value.amount/LAMPORTS_PER_SOL)
-        // } else {
-        //   console.log('no value')
-        // }
-  
+      let accounts = await connection.getParsedTokenAccountsByOwner(wallet.publicKey, { mint: index_mint });
+
+      let userindextoken
+      if(accounts.value[0]){
+        userindextoken = accounts.value[0].pubkey 
+        // or . push^
+        let balance = await connection.getTokenAccountBalance(accounts.value[0].pubkey)
+        console.log(balance.value.amount/LAMPORTS_PER_SOL)
+      } else {
+        userindextoken = await index_mint.createAccount(wallet.publicKey)
       }
-      // let accounts = await connection.getParsedTokenAccountsByOwner(pk, { mint: mint });
-      // let mint = await getMint(connection, mintPublicKey)
 
-      // indexTokenAcc = await mint.createAccount()
-      // // let userIndexAcc = await mintPublicKey.createAccount(wallet) 
-      // console.log('mint',mint)
-
-      // // let mint = new web3.PublicKey(tokenMint)
-      // let accounts = await connection.getParsedTokenAccountsByOwner(pk, { mint: mint });
-      // console.log('accounts', accounts)
-
-      // if(accounts.value[0]){
-      //   let balance = await connection.getTokenAccountBalance(accounts.value[0].pubkey)
-      //   console.log(balance.value.amount/LAMPORTS_PER_SOL)
-      // } else {
-      //   console.log('no value')
-      // }
-      // const mintToken = new Token(
-      //   connection,
-      //   mintPublicKey,
-      //   TOKEN_PROGRAM_ID,
-      //   wallet // the wallet owner will pay to transfer and to create recipients associated token account if it does not yet exist.
-      // );
-
-      // console.log('mintPublicKey', mintPublicKey)
+      await index_mint.mintTo(userindextoken, wallet.publicKey, [])
 
 
+      // transfer(connection, wallet.publicKey, )
+      // console.log('issue')
+      // const provider = await getProvider();
+
+      // const program = new anchor.Program(idl, programId, provider);
+      // const program_account = anchor.web3.Keypair.generate();
       // let authority
       // let bumpSeed
       // [authority, bumpSeed] = await web3.PublicKey.findProgramAddress(
-      //   [ammAccount.publicKey.toBuffer()],
+      //   [program_account.publicKey.toBuffer()],
       //   program.programId
       // );
 
+      // console.log('here', program.programId, wallet.publicKey)
+      // console.log('yo', authority)
 
-      // await program.rpc.mint_index(1, {
-      //   accounts: {
-      //     program_authority: authority,
-      //     user_transfer_authority: wallet.publicKey,
-      //     user_token_1: ,
-      //     user_token_2: ,
-      //     user_token_3: ,
-      //     program_token_1: ,
-      //     program_token_2: ,
-      //     program_token_3: ,
-      //     user_index_acc: ,
-      //     index_token_mint: ,
-      //     fee_account: ,
-      //     token_program: 
+      // // const mintPublicKey = new web3.PublicKey(tokenMints[0])
+
+      // let indexmint
+      // let userindexacc
+      // let usertokenaccount
+      // for(let i=0; i<tokenMints.length; i++){
+      //   let tokenMint = tokenMints[i]
+      // let index_mint = new web3.PublicKey(tokenMints[0])
+      // let accounts = await connection.getParsedTokenAccountsByOwner(wallet.publicKey, { mint: index_mint });
+      //   console.log('accounts', accounts)
+        
+      //   if(i == 0 && accounts.value[0]){
+      //     indexmint = mint
+      //     userindexacc = accounts.value[0].pubkey 
+      //     continue
       //   }
-      // })
+      // let userindextoken
+      // if(accounts.value[0]){
+      //   userindextoken = accounts.value[0].pubkey 
+      //   // or . push^
+      //   let balance = await connection.getTokenAccountBalance(accounts.value[0].pubkey)
+      //   console.log(balance.value.amount/LAMPORTS_PER_SOL)
+      // } else {
+      //   userindextoken = await mint.createAccount(wallet.publicKey)
+      // }
 
+      // await index_mint.mintTo(userindextoken, )
+      //   } else {
+      //     console.log('no value')
+      //   }
+  
+      // }
+      // // let accounts = await connection.getParsedTokenAccountsByOwner(pk, { mint: mint });
+      // // let mint = await getMint(connection, mintPublicKey)
+
+      // // indexTokenAcc = await mint.createAccount()
+      // // // let userIndexAcc = await mintPublicKey.createAccount(wallet) 
+      // // console.log('mint',mint)
+
+      // // // let mint = new web3.PublicKey(tokenMint)
+      // // let accounts = await connection.getParsedTokenAccountsByOwner(pk, { mint: mint });
+      // // console.log('accounts', accounts)
+
+      // // if(accounts.value[0]){
+      // //   let balance = await connection.getTokenAccountBalance(accounts.value[0].pubkey)
+      // //   console.log(balance.value.amount/LAMPORTS_PER_SOL)
+      // // } else {
+      // //   console.log('no value')
+      // // }
+      // // const mintToken = new Token(
+      // //   connection,
+      // //   mintPublicKey,
+      // //   TOKEN_PROGRAM_ID,
+      // //   wallet // the wallet owner will pay to transfer and to create recipients associated token account if it does not yet exist.
+      // // );
+
+      // // console.log('mintPublicKey', mintPublicKey)
+
+
+      // // let authority
+      // // let bumpSeed
+      // // [authority, bumpSeed] = await web3.PublicKey.findProgramAddress(
+      // //   [ammAccount.publicKey.toBuffer()],
+      // //   program.programId
+      // // );
+
+      // // await program.rpc.initialize()
+      // let tx = await program.rpc.mintIndex(
+      //   new anchor.BN(1),
+      //   {
+      //     accounts: {
+      //       programAuthority: authority,
+      //       userTransferAuthority: wallet.publicKey,
+      //       userToken1: usertokenaccount,
+      //       programToken1: program_account.publicKey,
+      //       userIndexAcc: userindexacc,
+      //       indexTokenMint: indexmint,
+      //       feeAccount: wallet.publicKey,
+      //       tokenProgram: TOKEN_PROGRAM_ID
+      //     }
+      //   })
+      // console.log('tx', tx)
 
 
   }

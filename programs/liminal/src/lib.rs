@@ -33,7 +33,7 @@ pub mod liminal {
     //         &[&ctx.accounts.amm.to_account_info().key.to_bytes()],
     //         ctx.program_id,
 
-    pub fn mint_index(ctx: Context<MintIndex>) -> Result<()> {
+    pub fn mint_index(ctx: Context<MintIndex>, amount_in: u64) -> Result<()> {
 
         let user_token_1 = &ctx.accounts.user_token_1;
         // let user_token_2 = &ctx.accounts.user_token_2;
@@ -45,7 +45,7 @@ pub mod liminal {
 
         let user_index_acc = &ctx.accounts.user_index_acc;
         // let program_index_acc = &ctx.accounts.program_index_acc;
-        let index_token_mint = &ctx.accounts.program_index_acc;
+        let index_token_mint = &ctx.accounts.index_token_mint;
 
         let program_authority = &ctx.accounts.program_authority;
         let user_transfer_authority = &ctx.accounts.user_transfer_authority;
@@ -99,7 +99,7 @@ pub mod liminal {
 
 
 
-    pub fn redeem_index(ctx: Context<RedeemIndex>) -> Result<()> {
+    pub fn redeem_index(ctx: Context<RedeemIndex>, amount_in: u64) -> Result<()> {
         // when a user wants to redeem
         // assuming everything to valid
 
@@ -113,7 +113,7 @@ pub mod liminal {
 
         let user_index_acc = &ctx.accounts.user_index_acc;
         // let program_index_acc = &ctx.accounts.program_index_acc;
-        let index_token_mint = &ctx.accounts.program_index_acc;
+        let index_token_mint = &ctx.accounts.index_token_mint;
 
         // let program_authority = &ctx.accounts.program_authority;
         // let user_transfer_authority = &ctx.accounts.user_transfer_authority;
@@ -171,18 +171,18 @@ pub struct MintIndex<'info> {
     pub user_transfer_authority: AccountInfo<'info>,
     #[account(mut)]
     pub user_token_1: Account<'info, TokenAccount>,
-    #[account(mut)]
-    pub user_token_2: Account<'info, TokenAccount>,
-    #[account(mut)]
-    pub user_token_3: Account<'info, TokenAccount>,
+    // #[account(mut)]
+    // pub user_token_2: Account<'info, TokenAccount>,
+    // #[account(mut)]
+    // pub user_token_3: Account<'info, TokenAccount>,
     #[account(mut)]
     pub program_token_1: Account<'info, TokenAccount>,
-    #[account(mut)]
-    pub program_token_2: Account<'info, TokenAccount>,
-    #[account(mut)]
-    pub program_token_3: Account<'info, TokenAccount>,
-    #[account(mut)]
-    pub program_index_acc: Account<'info, TokenAccount>,
+    // #[account(mut)]
+    // pub program_token_2: Account<'info, TokenAccount>,
+    // #[account(mut)]
+    // pub program_token_3: Account<'info, TokenAccount>,
+    // #[account(mut)]
+    // pub program_index_acc: Account<'info, TokenAccount>,
     #[account(mut)]
     pub user_index_acc: Account<'info, TokenAccount>,
     #[account(mut)]

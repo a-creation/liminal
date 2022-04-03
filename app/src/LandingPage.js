@@ -329,9 +329,9 @@ function LandingPage() {
     <div style={{backgroundColor:"#f8f8f8"}}>
       <div><button onClick={mintTokens}>MINT TOKEN</button></div>
       <div className="container-center-horizontal">
-      {priceList.length === 0 ? <div>hello</div> :
+      {priceList.length === 0 ? <LoadingScreen/>:
         <div className="dashboard screen">
-          <div className="flex-row">
+          <div className="flex-row" style={{marginBottom:'30px'}}>
             <div className="flex-col">
               <img className="liminal-text" src={liminalText} />
               <div className="sdi-label">

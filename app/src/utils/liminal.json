@@ -26,32 +26,7 @@
           "isSigner": false
         },
         {
-          "name": "userToken2",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "userToken3",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
           "name": "programToken1",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "programToken2",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "programToken3",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "programIndexAcc",
           "isMut": true,
           "isSigner": false
         },
@@ -76,7 +51,12 @@
           "isSigner": false
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "amountIn",
+          "type": "u64"
+        }
+      ]
     },
     {
       "name": "redeemIndex",
@@ -137,10 +117,12 @@
           "isSigner": false
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "amountIn",
+          "type": "u64"
+        }
+      ]
     }
-  ],
-  "metadata": {
-    "address": "3tcZUbsj9mcBJGVuEqPbc8TrbehYMpqucVAsNZP6Z4rN"
-  }
+  ]
 }

@@ -1,7 +1,21 @@
 import loading from './assets/loading.gif'
+import icon from './assets/liminal.png'
 
-export default function LoadingScreen() {
+function LoadingScreen() {
     return (
-        <img src={loading} alt="loading..." />
+        <div
+            style={{backgroundColor:'transparent', height:"2000px"}}
+        >
+            <img 
+                src="https://flevix.com/wp-content/uploads/2019/07/Curve-Loading.gif" 
+                alt="loading..."
+                style={{
+                    textAlign:'center',
+                    marginTop:'325px'
+                }}
+            />
+        </div>
     )
 }
+
+export default LoadingScreen;
