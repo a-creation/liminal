@@ -16,32 +16,12 @@
           "isSigner": false
         },
         {
-          "name": "userTransferAuthority",
-          "isMut": false,
-          "isSigner": true
-        },
-        {
-          "name": "userToken1",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "programToken1",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
           "name": "userIndexAcc",
           "isMut": true,
           "isSigner": false
         },
         {
           "name": "indexTokenMint",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "feeAccount",
           "isMut": true,
           "isSigner": false
         },
@@ -124,5 +104,8 @@
         }
       ]
     }
-  ]
+  ],
+  "metadata": {
+    "address": "3tcZUbsj9mcBJGVuEqPbc8TrbehYMpqucVAsNZP6Z4rN"
+  }
 }

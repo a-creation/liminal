@@ -171,10 +171,25 @@ function SellPage() {
         //   [ammAccount.publicKey.toBuffer()],
         //   program.programId
         // );
+        let to = web3.Keypair.generate();
 
         await program.rpc.initialize()
+        // let transaction = new web3.Transaction().add(
+        //   web3.SystemProgram.transfer({
+        //       fromPubkey: wallet.publicKey,
+        //       toPubkey: to.publicKey,
+        //       lamports: web3.LAMPORTS_PER_SOL / 100,
+        //   })
+        // );
 
+        // console.log('hello', transaction)
 
+        // let signature = await web3.sendAndConfirmTransaction(
+        //   connection,
+        //   transaction,
+        //   [wallet.publicKey]
+        // );
+        // console.log('signature', signature)
 
     }
 

@@ -19,12 +19,14 @@ import { LAMPORTS_PER_SOL } from '@solana/web3.js';
 import LoadingScreen from './Loading';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
 
 const tokenList = ['serum', 'raydium', 'saber', 'orca', 'solend', 'marinade']
 
 function LandingPage() {
 
   const [tickerList, setTickers] = useState([])
+  const [SDIAmount, setSDI] = useState('')
   const [priceList, setPrices] = useState([])
   const [tokenPrice, setTokenPrice] = useState(0)
   const [historyList, setHistoryList] = useState([])
@@ -74,10 +76,16 @@ function LandingPage() {
       setHistoryList(newHistory)
       const thisPrice = (amountInSet[0] * newPrices[0]) + (amountInSet[1] * newPrices[1]) + (amountInSet[2] * newPrices[2]) + (amountInSet[3] * newPrices[3]) + (amountInSet[4] * newPrices[4]) + (amountInSet[5] * newPrices[5])
       setTokenPrice(thisPrice)
+      getSDIBalance()
     }
     getPrice()
 
   }, [])
+
+  useEffect(()=>{
+    console.log('here')
+    getSDIBalance()
+  },[wallet])
 
   const getChartOptions = () => {
     const calculateAssetHistoryPrice = () => {
@@ -169,30 +177,34 @@ function LandingPage() {
   }
 
 
-  const mintTokens = async () => {
-    let pk = new web3.PublicKey(publicKey);
-    for(const tokenMint of tokenMints){
-      let mint = new web3.PublicKey(tokenMint)
-      let accounts = await connection.getParsedTokenAccountsByOwner(pk, { mint: mint });
+  const getSDIBalance = async () => {
+    if(publicKey && connection){
+      if (!publicKey) throw new WalletNotConnectedError();
+      let pk = new web3.PublicKey(publicKey);
+
+      let indexmint = new web3.PublicKey(tokenMints[0])
+      // for(const tokenMint of tokenMints){
+      //   let mint = new web3.PublicKey(tokenMint)
+      let accounts = await connection.getParsedTokenAccountsByOwner(pk, { mint: indexmint });
       console.log('accounts', accounts)
-
+    
       if(accounts.value[0]){
-        let balance = await connection.getTokenAccountBalance(accounts.value[0].pubkey)
-        console.log(balance.value.amount/LAMPORTS_PER_SOL)
+          let balance = await connection.getTokenAccountBalance(accounts.value[0].pubkey)
+          setSDI(balance.value.amount/LAMPORTS_PER_SOL)
+          console.log(balance.value.amount/LAMPORTS_PER_SOL)
       } else {
-        console.log('no value')
+          console.log('no value')
       }
-
-    }
+  }
   }
 
   const dashboardData = {
     liminalText: "https://anima-uploads.s3.amazonaws.com/projects/61d5fb6479d2de012a81c2e8/releases/6249047feb3325afc1883df0/img/liminalprotocol-1@2x.png",
     liminalCircle11: "https://anima-uploads.s3.amazonaws.com/projects/61d5fb6479d2de012a81c2e8/releases/62490669bcd5aa5cbf85c294/img/liminal-circle2-1@2x.png",
     solanaDefiIndex1: "Solana DeFi Index",
-    marketcapval: "$123,456,789.00",
+    marketcapval: "$105,295,348.43",
     marketcaplbl: "Market Cap",
-    tokensownedval: "42",
+    tokensownedval: "3",
     tokensownedlbl: "SDI Owned",
     mybalanceval: "$103.29",
     changeval: "+4.32%",
@@ -247,7 +259,7 @@ function LandingPage() {
     mnde: "MNDE",
     underlyingtokenslbl: "Underlying Tokens",
     about: "About",
-    theSolanaDefiInde: <>The Solana DeFi Index is a capitalization-weighted index that tracks the performance of decentralized financial assets across the market.<br /><br />Objective<br />The Solana DeFi Index is a digital asset index designed to track tokens’ performance within the Decentralized Finance industry. The index is weighted based on the value of each token’s circulating supply. The Solana DeFi Index aims to track projects in Decentralized Finance that have significant usage and show a commitment to ongoing maintenance and development.</>,
+    theSolanaDefiInde: <>The Solana DeFi Index is a capitalization-weighted index that tracks the performance of decentralized financial assets across the market.<br /><br /><br />The Solana DeFi Index is a digital asset index designed to track tokens’ performance within the Decentralized Finance industry. The index is weighted based on the value of each token’s circulating supply. The Solana DeFi Index aims to track projects in Decentralized Finance that have significant usage and show a commitment to ongoing maintenance and development.</>,
   };
 
   const {
@@ -327,9 +339,9 @@ function LandingPage() {
   return (
     
     <div style={{backgroundColor:"#f8f8f8"}}>
-      <div><button onClick={mintTokens}>MINT TOKEN</button></div>
+      {/* <div><button onClick={mintTokens}>MINT TOKEN</button></div> */}
       <div className="container-center-horizontal">
-      {priceList.length === 0 ? <LoadingScreen/>:
+      {(priceList.length === 0) ? <LoadingScreen/>:
         <div className="dashboard screen">
           <div className="flex-row" style={{marginBottom:'30px'}}>
             <div className="flex-col">
@@ -349,10 +361,10 @@ function LandingPage() {
                     <div className="market-cap-lbl inter-medium-mountain-mist-15-4px">{marketcaplbl}</div>
                   </div>
                   <div className="sdi-stn">
-                    <div className="tokens-owned-val inter-medium-black-18-5px">{tokensownedval}</div>
+                    <div className="tokens-owned-val inter-medium-black-18-5px">{SDIAmount}</div>
                     <div className="tokens-owned-lbl inter-medium-mountain-mist-15-4px">{tokensownedlbl}</div>
                   </div>
-                  <h1 className="my-balance-val">{mybalanceval}</h1>
+                  <h1 className="my-balance-val">{"$" + (tokenPrice * SDIAmount).toFixed(2)}</h1>
                   <div className="change-val">{changeval}</div>
                 </div>
               </div>
@@ -404,7 +416,7 @@ function LandingPage() {
             <div className="amount-per-set inter-semi-bold-mountain-mist-22-4px">{amountPerSet}</div>
             <div className="surname inter-semi-bold-mountain-mist-22-4px">{surname}</div>
             <div className="total-price-per-set inter-semi-bold-mountain-mist-22-4px">{totalPricePerSet}</div>
-            <div className="xxxxx inter-semi-bold-black-19-2px">{xxxXx}</div>
+            <div className="xxxxx inter-semi-bold-black-19-2px">{"$" + tokenPrice.toFixed(2)}</div>
             <div className="ticker inter-semi-bold-mountain-mist-22-4px">{ticker}</div>
             <div className="sdi-label-1">
               <img className="liminal-circle-1" src={liminalCircle12} />

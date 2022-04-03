@@ -35,11 +35,11 @@ pub mod liminal {
 
     pub fn mint_index(ctx: Context<MintIndex>, amount_in: u64) -> Result<()> {
 
-        let user_token_1 = &ctx.accounts.user_token_1;
+        // let user_token_1 = &ctx.accounts.user_token_1;
         // let user_token_2 = &ctx.accounts.user_token_2;
         // let user_token_3 = &ctx.accounts.user_token_3;
 
-        let program_token_1 = &ctx.accounts.program_token_1;
+        // let program_token_1 = &ctx.accounts.program_token_1;
         // let program_token_2 = &ctx.accounts.program_token_2;
         // let program_token_3 = &ctx.accounts.program_token_3;
 
@@ -48,7 +48,7 @@ pub mod liminal {
         let index_token_mint = &ctx.accounts.index_token_mint;
 
         let program_authority = &ctx.accounts.program_authority;
-        let user_transfer_authority = &ctx.accounts.user_transfer_authority;
+        // let user_transfer_authority = &ctx.accounts.user_transfer_authority;
 
         let token_program = &ctx.accounts.token_program;
 
@@ -56,17 +56,17 @@ pub mod liminal {
         let mintamount = 1;
 
         // First, transfer from user's token1 account to program's token1 account
-        token::transfer(
-            CpiContext::new(
-                token_program.to_account_info(),
-                Transfer {
-                    from: user_token_1.to_account_info(),
-                    to: program_token_1.to_account_info(),
-                    authority: user_transfer_authority.to_account_info(),
-                },
-            ),
-            transferamount,
-        )?;
+        // token::transfer(
+        //     CpiContext::new(
+        //         token_program.to_account_info(),
+        //         Transfer {
+        //             from: user_token_1.to_account_info(),
+        //             to: program_token_1.to_account_info(),
+        //             authority: user_transfer_authority.to_account_info(),
+        //         },
+        //     ),
+        //     transferamount,
+        // )?;
         
         // Next, mint indexToken into program's indexToken account
         token::mint_to(
@@ -121,21 +121,34 @@ pub mod liminal {
         let token_program = &ctx.accounts.token_program;
 
         let transferamount = 1;
-        let mintamount = 1;
+        let burnamount = 1;
 
         // Transfer index token from 
 
-        // token::transfer(
-        //     CpiContext::new(
-        //         token_program.to_account_info(),
-        //         Transfer {
-        //             from: user_index_acc.to_account_info(),
-        //             to: program_token_1.to_account_info(),
-        //             authority: user_transfer_authority.to_account_info(),
-        //         },
-        //     ),
-        //     transferamount,
-        // )?;
+        token::transfer(
+            CpiContext::new(
+                token_program.to_account_info(),
+                Transfer {
+                    from: user_index_acc.to_account_info(),
+                    to: program_token_1.to_account_info(),
+                    authority: user_transfer_authority.to_account_info(),
+                },
+            ),
+            transferamount,
+        )?;
+
+            token::burn(
+            CpiContext::new(
+                token_program.to_account_info(),
+                Burn {
+                    from: user_index_acc.to_account_info(),
+                    to: program_token_1.to_account_info(),
+                    authority: user_transfer_authority.to_account_info(),
+                },
+            ),
+            burnamount,
+        )?;
+
 
         Ok(())
     }
@@ -167,16 +180,16 @@ pub struct MintIndex<'info> {
     /// CHECK: Not dangerous
     pub program_authority: AccountInfo<'info>,
     /// CHECK: Not dangerous
-    #[account(signer)]
-    pub user_transfer_authority: AccountInfo<'info>,
-    #[account(mut)]
-    pub user_token_1: Account<'info, TokenAccount>,
+    // #[account(signer)]
+    // pub user_transfer_authority: AccountInfo<'info>,
+    // #[account(mut)]
+    // pub user_token_1: Account<'info, TokenAccount>,
     // #[account(mut)]
     // pub user_token_2: Account<'info, TokenAccount>,
     // #[account(mut)]
     // pub user_token_3: Account<'info, TokenAccount>,
-    #[account(mut)]
-    pub program_token_1: Account<'info, TokenAccount>,
+    // #[account(mut)]
+    // pub program_token_1: Account<'info, TokenAccount>,
     // #[account(mut)]
     // pub program_token_2: Account<'info, TokenAccount>,
     // #[account(mut)]
@@ -187,8 +200,8 @@ pub struct MintIndex<'info> {
     pub user_index_acc: Account<'info, TokenAccount>,
     #[account(mut)]
     pub index_token_mint: Account<'info, Mint>,
-    #[account(mut)]
-    pub fee_account: Account<'info, TokenAccount>,
+    // #[account(mut)]
+    // pub fee_account: Account<'info, TokenAccount>,
     /// CHECK: Not dangerous
     pub token_program: AccountInfo<'info>,
 }
