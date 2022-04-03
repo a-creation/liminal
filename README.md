@@ -1,5 +1,9 @@
+# Liminal Protocol
+Devpost: https://devpost.com/software/liminal-protocol  
+Website: https://liminal-protocol.web.app/  
 
 
+## Quick Start Guide
 yarn install / npm install
 anchor build to generate client
 anchor deploy
