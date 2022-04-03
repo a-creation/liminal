@@ -16,6 +16,9 @@ import tokenMints from './utils/tokens'
 import { web3, Provider, setProvider } from '@project-serum/anchor';
 import { ConnectionContext, useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { LAMPORTS_PER_SOL } from '@solana/web3.js';
+import LoadingScreen from './Loading';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const tokenList = ['serum', 'raydium', 'saber', 'orca', 'solend', 'marinade']
 
@@ -23,15 +26,17 @@ function LandingPage() {
 
   const [tickerList, setTickers] = useState([])
   const [priceList, setPrices] = useState([])
+  const [tokenPrice, setTokenPrice] = useState(0)
   const [historyList, setHistoryList] = useState([])
   const [amountInSet, setAmounts] = useState([6.75,3.8,3.65,2,1.15,0.45])
   const [chartOptions, setOptions] = useState(null)
-
+  const [loading, setLoading] = useState(true)
   const { connection } = useConnection();
   const { publicKey, sendTransaction } = useWallet();
   const wallet = useWallet();
 
   useEffect(() => {
+    setTimeout(() => setLoading(false), 6000)
 
     // for(const token of tokenList){
     //   await getPrice(token)
@@ -67,6 +72,8 @@ function LandingPage() {
       setTickers(newTickerList)
       setPrices(newPrices)
       setHistoryList(newHistory)
+      const thisPrice = (amountInSet[0] * newPrices[0]) + (amountInSet[1] * newPrices[1]) + (amountInSet[2] * newPrices[2]) + (amountInSet[3] * newPrices[3]) + (amountInSet[4] * newPrices[4]) + (amountInSet[5] * newPrices[5])
+      setTokenPrice(thisPrice)
     }
     getPrice()
 
@@ -238,7 +245,7 @@ function LandingPage() {
     mnde: "MNDE",
     underlyingtokenslbl: "Underlying Tokens",
     about: "About",
-    theSolanaDefiInde: <>The Solana DeFi Index is a capitalization-weighted index that tracks the performance of decentralized financial assets across the market.<br /><br />Objective<br />The DeFi Pulse Index is a digital asset index designed to track tokens’ performance within the Decentralized Finance industry. The index is weighted based on the value of each token’s circulating supply. The DeFi Pulse Index aims to track projects in Decentralized Finance that have significant usage and show a commitment to ongoing maintenance and development.</>,
+    theSolanaDefiInde: <>The Solana DeFi Index is a capitalization-weighted index that tracks the performance of decentralized financial assets across the market.<br /><br />Objective<br />The Solana DeFi Index is a digital asset index designed to track tokens’ performance within the Decentralized Finance industry. The index is weighted based on the value of each token’s circulating supply. The Solana DeFi Index aims to track projects in Decentralized Finance that have significant usage and show a commitment to ongoing maintenance and development.</>,
   };
 
   const {
@@ -305,11 +312,22 @@ function LandingPage() {
   } = dashboardData;
 
 
+  // return (
+  //   <>
+  //   {loading === false ? (
+  //     <div>hi</div>
+  //     ) : (
+  //       <LoadingScreen />
+  //     )}
+  //     </>
+  // );
+
   return (
+    
     <div style={{backgroundColor:"#f8f8f8"}}>
       <div><button onClick={mintTokens}>MINT TOKEN</button></div>
       <div className="container-center-horizontal">
-      {priceList.length !== 0 &&
+      {priceList.length === 0 ? <div>hello</div> :
         <div className="dashboard screen">
           <div className="flex-row">
             <div className="flex-col">
@@ -386,7 +404,9 @@ function LandingPage() {
               <img className="liminal-circle-1" src={liminalCircle12} />
               <div className="solana-de-fi-index-1 inter-semi-bold-black-19-2px">{solanaDefiIndex2}</div>
             </div>
-            <div className="xxxxx inter-semi-bold-black-19-2px">{xxxXx}</div>
+            <div className="xxxxx inter-semi-bold-black-19-2px">{
+              "$" + tokenPrice.toFixed(2)}
+            </div>
             <div className="serum-row inter-normal-black-19-2px">
               <div className="serum-label">
                 <img className="liminal-circle-1" src={liminalCircle13} />

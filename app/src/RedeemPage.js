@@ -28,6 +28,10 @@ import { web3, Provider, setProvider } from '@project-serum/anchor';
 import { ConnectionContext, useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { LAMPORTS_PER_SOL } from '@solana/web3.js';
 import tokenMints from './utils/tokens'
+import idl from './utils/liminal.json'
+import * as anchor from '@project-serum/anchor';
+
+const programId = "3tcZUbsj9mcBJGVuEqPbc8TrbehYMpqucVAsNZP6Z4rN"
 
 function SellPage() {
 
@@ -153,11 +157,24 @@ function SellPage() {
         );
         return provider;
     }
+
     const redeemFunction = async () => {
         console.log('redeem')
         const provider = await getProvider();
 
-        // const program = new anchor.Program(idl, programId, provider);
+        const program = new anchor.Program(idl, programId, provider);
+
+        console.log('here', program.programId)
+        // let authority
+        // let bumpSeed
+        // [authority, bumpSeed] = await web3.PublicKey.findProgramAddress(
+        //   [ammAccount.publicKey.toBuffer()],
+        //   program.programId
+        // );
+
+        await program.rpc.initialize()
+
+
 
     }
 

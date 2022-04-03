@@ -1,0 +1,146 @@
+{
+  "version": "0.1.0",
+  "name": "liminal",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [],
+      "args": []
+    },
+    {
+      "name": "mintIndex",
+      "accounts": [
+        {
+          "name": "programAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userTransferAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "userToken1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userToken2",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userToken3",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "programToken1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "programToken2",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "programToken3",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "programIndexAcc",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userIndexAcc",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "indexTokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "feeAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "redeemIndex",
+      "accounts": [
+        {
+          "name": "userToken1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userToken2",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userToken3",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "programToken1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "programToken2",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "programToken3",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "programIndexAcc",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userIndexAcc",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "indexTokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "feeAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    }
+  ],
+  "metadata": {
+    "address": "3tcZUbsj9mcBJGVuEqPbc8TrbehYMpqucVAsNZP6Z4rN"
+  }
+}

@@ -16,7 +16,7 @@ use crate::curve::{
 };
 */
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("3tcZUbsj9mcBJGVuEqPbc8TrbehYMpqucVAsNZP6Z4rN");
 
 #[program]
 pub mod liminal {

@@ -1,7 +1,7 @@
 [features]
 seeds = false
 [programs.localnet]
-liminal = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+liminal = "3tcZUbsj9mcBJGVuEqPbc8TrbehYMpqucVAsNZP6Z4rN"
 
 [registry]
 url = "https://anchor.projectserum.com"
