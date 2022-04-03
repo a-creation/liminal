@@ -386,7 +386,7 @@ function LandingPage() {
               </div>
               <div className="overlap-group4">
                 <div className="buy inter-semi-bold-white-22-4px">
-                  <a href="https://raydium.io/swap/">Buy</a>
+                  <a href="https://raydium.io/swap/" target="_blank">Buy</a>
                 </div>
               </div>
             </div>
@@ -396,7 +396,7 @@ function LandingPage() {
               </div>
               <div className="overlap-group5">
                 <div className="sell inter-semi-bold-white-22-4px">
-                  <a href="https://raydium.io/swap/">Sell</a>
+                  <a href="https://raydium.io/swap/" target="_blank">Sell</a>
                 </div>
               </div>
             </div>
