@@ -208,10 +208,18 @@
   padding: 14.6px 45.7px;
 }
 
+.overlap-group2:hover {
+  background-color: #2ad7ba;
+}
+
 .mint {
   letter-spacing: 0;
   min-height: 27px;
   min-width: 49px;
+}
+
+.mint:hover {
+  background-color:#2ad7ba;
 }
 
 .overlap-group3 {
@@ -226,28 +234,55 @@
   padding: 15.9px 25.6px;
 }
 
+.overlap-group3:hover {
+  background-color: #2ad7ba;
+}
+
 .redeem {
   letter-spacing: 0;
   min-height: 27px;
   min-width: 89px;
 }
 
+.redeem:hover {
+  background-color: #2ad7ba;
+}
+
 .overlap-group4 {
-  align-items: flex-start;
+  /* align-items: flex-start;
   background-color: var(--heliotrope);
   border-radius: 9.6px;
-  /* display: flex; */
+  display: flex;
   height: 59px;
   margin-bottom: 32.97px;
   margin-left: 16px;
   min-width: 141px;
   padding: 14.1px 46.7px;
-  text-align: center;
+  text-align: center; */
+  align-items: flex-start;
+  /* align-items: flex-end; */
+  background-color: var(--heliotrope);
+  border-radius: 9.6px;
+  /* display: flex; */
+  height: 59px;
+  /* justify-content: flex-end; */
+  margin-right: 2.0px;
+  margin-top: 80px;
+  min-width: 141px;
+  padding: 15.9px 50.2px;
+}
+
+.overlap-group4:hover {
+  background-color: #ca7ee5;
 }
 
 .buy {
   letter-spacing: 0;
   min-height: 27px;
+}
+
+.buy:hover {
+  background-color: #ca7ee5;
 }
 
 .overlap-group-container {
@@ -264,7 +299,6 @@
 .overlap-group {
   align-items: flex-start;
   flex-direction: column;
-  background-image: url(https://anima-uploads.s3.amazonaws.com/projects/61d5fb6479d2de012a81c2e8/releases/6248c99afc21b296361f38c4/img/rectangle-1@2x.svg);
   background-size: 100% 100%;
   display: flex;
   height: 45px;
@@ -275,28 +309,41 @@
   margin-top: 50px;
 }
 
+.wallet-adapter-button.wallet-adapter-button-trigger:hover {
+  background-color: #482897 !important;
+}
+
 .connect-wallet {
   height: 13px;
   width: 119px;
 }
 
 .overlap-group5 {
-  align-items: flex-end;
+  align-items: flex-start;
+  /* align-items: flex-end; */
   background-color: var(--heliotrope);
   border-radius: 9.6px;
-  display: flex;
+  /* display: flex; */
   height: 59px;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   margin-right: 2.0px;
   margin-top: 80px;
   min-width: 141px;
   padding: 15.9px 50.2px;
 }
 
+.overlap-group5:hover {
+  background-color: #ca7ee5;
+}
+
 .sell {
   letter-spacing: 0;
   min-height: 27px;
   min-width: 40px;
+}
+
+.sell:hover {
+  background-color: #ca7ee5;
 }
 
 .overlap-group8 {
@@ -412,7 +459,7 @@
 }
 
 .xxxxx {
-  left: 945px;
+  left: 670px;
   letter-spacing: 0;
   position: absolute;
   text-align: right;
